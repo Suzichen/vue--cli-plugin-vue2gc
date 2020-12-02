@@ -1,0 +1,14 @@
+{
+  "name": "vue-cli-plugin-vue2gc",
+  "version": "0.0.6",
+  "description": "vue2 component generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suzic",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
