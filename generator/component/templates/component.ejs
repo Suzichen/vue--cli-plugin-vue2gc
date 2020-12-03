@@ -18,6 +18,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped<% if (options.style) {
+  %> lang="<%- options.style %>"<%
+} %>>
 
 </style>

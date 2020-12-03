@@ -15,16 +15,25 @@ const getGeneratedFilePath = options => {
    *    -> src/components/Test/Test.vue
    *    -> src/components/Test/index.js
    *
-   * 3. --component test --path otherComp
+   * 2. --component test --path=otherComp
    *    -> src/otherComp/Test/Test.vue
    *    -> src/otherComp/Test/index.js
+   * 
+   * 3. --component test --path=otherComp --export=false
+   *    -> src/otherComp/Test.vue
    */
-  const { component: fileName, path: filePath = 'components' } = options
+  const {
+    component: fileName,
+    path: filePath = 'components',
+    export: isExport = 'true'
+  } = options
   // 带后缀的文件名
   let pascalCaseFileName = pascalCase(fileName)
   let fileFullName = `${pascalCaseFileName}.vue`
   // 文件存放位置
-  const filePathArray = `${filePath}/${pascalCaseFileName}`.split('/')
+  const filePathArray = isExport !== 'false'
+    ? `${filePath}/${pascalCaseFileName}`.split('/')
+    : filePath.split('/')
   const fileFullPath = ['src', ...filePathArray, fileFullName]
   const indexFullPath = ['src', ...filePathArray, 'index.js']
   return {
