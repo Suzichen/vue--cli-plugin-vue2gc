@@ -14,6 +14,8 @@ vue invoke vue-cli-plugin-vue2gc
 
 ``` shell
 npm run gc test-component
+or
+yarn gc test-component
 ```
 上面命令会生成一个包含两个文件的组件： `src/components/TestComponent/TestComponent.vue`、`src/components/TestComponent/index.js` 。
 
@@ -22,7 +24,9 @@ npm run gc test-component
 你可以用 `--path` 选项指定生成的组件的位置。
 
 ```
-npm run gc test-component --path otherComps
+npm run gc test-component -- --path=otherComps
+or
+yarn gc test-component --path=otherComps
 ```
 这样生成的组件位置会是： `src/otherComps/TestComponent` 。
 
@@ -31,7 +35,9 @@ npm run gc test-component --path otherComps
 使用 `--export=false` 可默认不导出，这将仅生成一个单文件组件。
 
 ``` shell
-npm run gc test-component --export=false
+npm run gc test-component -- --export=false --style=scss
+or
+yarn gc test-component --export=false --style=scss
 ```
 上面命令会生成一个单文件组件： `src/components/TestComponent.vue` 。
 
@@ -46,7 +52,9 @@ npm run gc test-component --export=false
 
 使用 `--style` 可生成对应的css扩展：
 ``` shell
-npm run gc test-component --style=less
+npm run gc test-component -- --style=less
+or
+yarn gc test-component --style=less
 ```
 ``` html
 <style scoped lang="less">
