@@ -6,13 +6,13 @@ const {
 
 const componentGenerator = (api, options) => {
   if (!options.component) return
-  const generatedComponentPath = getGeneratedFilePath(options)
-  const { componentTemplatePath, indexPath } = getTemplatePath()
+  const { fileFullPath: generatedComponentPath, indexFullPath } = getGeneratedFilePath(options)
+  const { componentTemplatePath, indexTemplatePath } = getTemplatePath()
   const { componentName, componentNamePascalCase, cssName } = getComponentName(options)
   api.render(
     {
       [generatedComponentPath]: componentTemplatePath,
-      'index.js': indexPath
+      [indexFullPath]: indexTemplatePath
     },
     {
       componentName,

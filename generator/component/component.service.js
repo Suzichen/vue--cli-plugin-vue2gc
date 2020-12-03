@@ -11,41 +11,33 @@ const hump2line = str => {
 
 const getGeneratedFilePath = options => {
   /**
-   * 1. --component comment
-   *    -> src/comment/comment.vue
+   * 1. --component test
+   *    -> src/components/Test/Test.vue
+   *    -> src/components/Test/index.js
    *
-   * 2. --component comment-index
-   *    -> src/comment/index/comment-index.vue
-   *
-   * 3. --component comment-list --path comment/index/components
-   *    -> src/comment/index/components/comment-list.vue
+   * 3. --component test --path otherComp
+   *    -> src/otherComp/Test/Test.vue
+   *    -> src/otherComp/Test/index.js
    */
-  const { component: fileName, path: filePath } = options
+  const { component: fileName, path: filePath = 'components' } = options
   // 带后缀的文件名
-  let fileFullName = `${fileName}.vue`
-  const fileNameArray = fileName.split('-')
-  const isMultiWordsFile = fileNameArray.length > 1
+  let pascalCaseFileName = pascalCase(fileName)
+  let fileFullName = `${pascalCaseFileName}.vue`
   // 文件存放位置
-  let fileFullPath = []
-  if (filePath) {
-    // 3
-    const filePathArray = filePath.split('/')
-    fileFullPath = ['src', ...filePathArray, fileFullName]
-  } else if (isMultiWordsFile) {
-    // 2
-    fileFullPath = ['src', ...fileNameArray, fileFullName]
-  } else {
-    // 1
-    fileFullPath = ['src', fileName, fileFullName]
+  const filePathArray = `${filePath}/${pascalCaseFileName}`.split('/')
+  const fileFullPath = ['src', ...filePathArray, fileFullName]
+  const indexFullPath = ['src', ...filePathArray, 'index.js']
+  return {
+    fileFullPath: path.join(...fileFullPath),
+    indexFullPath: path.join(...indexFullPath)
   }
-  return path.join(...fileFullPath)
 }
 
 const getTemplatePath = () => {
   const componentTemplatePath = path.join('.', 'templates', 'component.ejs')
-  const indexPath = path.join('.', 'templates', 'index.ejs')
+  const indexTemplatePath = path.join('.', 'templates', 'index.ejs')
 
-  return { componentTemplatePath, indexPath }
+  return { componentTemplatePath, indexTemplatePath }
 }
 
 const getComponentName = options => {

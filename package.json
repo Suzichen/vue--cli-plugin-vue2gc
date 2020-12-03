@@ -1,11 +1,16 @@
 {
   "name": "vue-cli-plugin-vue2gc",
-  "version": "0.0.6",
-  "description": "vue2 component generator",
+  "version": "0.1.0",
+  "description": "vue component generator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Suzichen/vue--cli-plugin-vue2gc"
+  },
+  "homepage": "https://github.com/Suzichen/vue--cli-plugin-vue2gc",
   "author": "Suzic",
   "license": "MIT",
   "dependencies": {
