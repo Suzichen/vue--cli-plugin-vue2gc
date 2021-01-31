@@ -17,7 +17,10 @@ npm run gc test-component
 or
 yarn gc test-component
 ```
-上面命令会生成一个包含两个文件的组件： `src/components/TestComponent/TestComponent.vue`、`src/components/TestComponent/index.js` 。
+上面命令会生成一个包含三个文件的组件： 
+`src/components/TestComponent/TestComponent.vue`、
+`src/components/TestComponent/index.js` 、
+`src/components/TestComponent/README.md`。
 
 **指定位置**
 

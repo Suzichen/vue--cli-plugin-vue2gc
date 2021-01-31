@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-vue2gc",
-  "version": "0.1.2",
+  "version": "0.2",
   "description": "vue component generator",
   "main": "index.js",
   "scripts": {

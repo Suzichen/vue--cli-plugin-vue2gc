@@ -14,10 +14,12 @@ const getGeneratedFilePath = options => {
    * 1. --component test
    *    -> src/components/Test/Test.vue
    *    -> src/components/Test/index.js
+   *    -> src/components/Test/README.md
    *
    * 2. --component test --path=otherComp
    *    -> src/otherComp/Test/Test.vue
    *    -> src/otherComp/Test/index.js
+   *    -> src/components/Test/README.md
    * 
    * 3. --component test --path=otherComp --export=false
    *    -> src/otherComp/Test.vue
@@ -36,17 +38,20 @@ const getGeneratedFilePath = options => {
     : filePath.split('/')
   const fileFullPath = ['src', ...filePathArray, fileFullName]
   const indexFullPath = ['src', ...filePathArray, 'index.js']
+  const readmeFullPath = ['src', ...filePathArray, 'README.md']
   return {
     fileFullPath: path.join(...fileFullPath),
-    indexFullPath: path.join(...indexFullPath)
+    indexFullPath: path.join(...indexFullPath),
+    readmeFullPath: path.join(...readmeFullPath)
   }
 }
 
 const getTemplatePath = () => {
   const componentTemplatePath = path.join('.', 'templates', 'component.ejs')
   const indexTemplatePath = path.join('.', 'templates', 'index.ejs')
+  const readmeTemplatePath = path.join('.', 'templates', 'README.ejs')
 
-  return { componentTemplatePath, indexTemplatePath }
+  return { componentTemplatePath, indexTemplatePath, readmeTemplatePath }
 }
 
 const getComponentName = options => {

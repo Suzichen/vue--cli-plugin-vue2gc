@@ -7,12 +7,13 @@ const {
 const componentGenerator = (api, options) => {
   const { component, export: isExport = 'true' } = options
   if (!component) return
-  const { fileFullPath: generatedComponentPath, indexFullPath } = getGeneratedFilePath(options)
-  const { componentTemplatePath, indexTemplatePath } = getTemplatePath()
+  const { fileFullPath: generatedComponentPath, indexFullPath, readmeFullPath } = getGeneratedFilePath(options)
+  const { componentTemplatePath, indexTemplatePath, readmeTemplatePath } = getTemplatePath()
   const { componentName, componentNamePascalCase, cssName } = getComponentName(options)
   const tempConfig = { [generatedComponentPath]: componentTemplatePath }
   if (isExport !== 'false') {
     tempConfig[indexFullPath] = indexTemplatePath
+    tempConfig[readmeFullPath] = readmeTemplatePath
   }
   api.render(
     tempConfig,
